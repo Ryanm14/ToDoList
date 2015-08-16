@@ -2,6 +2,7 @@ package me.ryanmiles.todo.activities;
 
 
 import android.support.v7.app.AppCompatActivity;
+import android.util.EventLog;
 
 import de.greenrobot.event.EventBus;
 
@@ -21,5 +22,8 @@ public class BaseActivity extends AppCompatActivity {
         EventBus.getDefault().unregister(this);
     }
 
+    @SuppressWarnings("unused")
+    public void onEventMainThread(EventLog.Event event) {
+    }
 
 }

@@ -5,14 +5,24 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import me.ryanmiles.todo.fragments.ToDoToday;
 import me.ryanmiles.todolist.R;
 
 public class ToDo extends AppCompatActivity {
+
+    ToDoToday toDoTodayFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
+        if (savedInstanceState == null) {
+            toDoTodayFragment = new ToDoToday();
+
+            getSupportFragmentManager().beginTransaction()
+                    .add(R.id.todo_frame, toDoTodayFragment)
+                    .commit();
+        }
     }
 
 

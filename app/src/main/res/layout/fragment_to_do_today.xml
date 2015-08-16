@@ -9,8 +9,19 @@
     tools:context="me.ryanmiles.todo.fragments.ToDoToday">
 
     <TextView
+        android:id="@+id/show_items"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:text="Test" />
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_gravity="end|bottom"
+        android:onClick="" />
 
 </RelativeLayout>
