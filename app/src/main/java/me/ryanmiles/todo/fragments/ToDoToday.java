@@ -3,13 +3,13 @@ package me.ryanmiles.todo.fragments;
 import android.app.Activity;
 import android.app.Dialog;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.EditText;
 
 import java.util.List;
@@ -68,9 +68,8 @@ public class ToDoToday extends Fragment {
     public void newItem() {
         final Dialog dialog = new Dialog(getActivity());
         dialog.setContentView(R.layout.custom_dialog);
-        dialog.setTitle("Title");
-
-        Button button = (Button) dialog.findViewById(R.id.add_new_task);
+        dialog.setTitle("Add a New Task");
+        FloatingActionButton button = (FloatingActionButton) dialog.findViewById(R.id.add_new_task);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
 

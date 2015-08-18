@@ -1,19 +1,67 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+    <ImageView
+        android:id="@+id/dot"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:layout_alignBottom="@+id/newTask"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/ic_dot" />
     <EditText
         android:id="@+id/newTask"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:hint="Task Name" />
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_margin="12dp"
+        android:layout_toRightOf="@+id/dot"
+        android:background="@android:color/transparent"
+        android:hint="Task Name"
+        android:textSize="25sp" />
 
-    <Button
+    <ImageView
+        android:id="@+id/greyLine1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newTask"
+        android:src="@drawable/grey_line" />
+
+    <EditText
+        android:id="@+id/newDesc"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:layout_alignEnd="@+id/newTask"
+        android:layout_alignLeft="@+id/newTask"
+        android:layout_alignRight="@+id/newTask"
+        android:layout_below="@+id/greyLine1"
+        android:layout_marginTop="12dp"
+        android:background="@android:color/transparent"
+        android:gravity="top"
+        android:hint="Task Description" />
+
+    <ImageView
+        android:id="@+id/descIcon"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/greyLine1"
+        android:layout_toLeftOf="@+id/newTask"
+        android:layout_toStartOf="@+id/newTask"
+        android:src="@drawable/ic_desc" />
+
+    <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_new_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Yweagh" />
-
-</LinearLayout>
+        android:layout_alignEnd="@+id/newDesc"
+        android:layout_alignRight="@+id/newDesc"
+        android:layout_below="@+id/newDesc"
+        android:layout_marginBottom="10dp"
+        android:src="@drawable/ic_add" />
+</RelativeLayout>
