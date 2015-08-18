@@ -5,7 +5,6 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -39,10 +38,10 @@ public class ItemListRecylerAdapter extends RecyclerView.Adapter<ItemListRecyler
         Item item = items.get(position);
         holder.title.setText(item.getTitle());
         //holder.itemView.setOnClickListener(new OpenItem(position));
-        holder.relativeLayout.setTag(position);
-        holder.relativeLayout.setOnClickListener(new View.OnClickListener() {
+        holder.title.setTag(position);
+        holder.title.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                RelativeLayout cb = (RelativeLayout) v;
+                TextView cb = (TextView) v;
                 int pos = (int) cb.getTag();
                 removeItem(pos);
             }
@@ -75,13 +74,11 @@ public class ItemListRecylerAdapter extends RecyclerView.Adapter<ItemListRecyler
 
         View itemView;
         TextView title;
-        RelativeLayout relativeLayout;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
             title = (TextView) itemView.findViewById(R.id.title_text_view);
-            relativeLayout = (RelativeLayout) itemView.findViewById(R.id.card_layout);
         }
     }
 
