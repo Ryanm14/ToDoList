@@ -55,13 +55,41 @@
         android:layout_toStartOf="@+id/newTask"
         android:src="@drawable/ic_desc" />
 
+    <ImageView
+        android:id="@+id/greyLine2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/newDesc"
+        android:src="@drawable/grey_line" />
+
+    <Spinner
+        android:id="@+id/newPriority"
+        android:layout_width="250dp"
+        android:layout_height="75dp"
+        android:layout_below="@+id/descIcon"
+        android:layout_marginTop="24dp"
+        android:layout_toEndOf="@+id/priority_ic"
+        android:layout_toRightOf="@+id/priority_ic"
+        android:background="@android:color/transparent"
+        android:drawSelectorOnTop="true"
+        android:entries="@array/array_name"
+        android:gravity="top" />
+
+    <ImageView
+        android:id="@+id/priority_ic"
+        android:layout_width="60dp"
+        android:layout_height="50dp"
+        android:layout_alignEnd="@+id/dot"
+        android:layout_alignRight="@+id/dot"
+        android:layout_alignTop="@+id/greyLine2"
+        android:src="@drawable/ic_pr" />
+
     <android.support.design.widget.FloatingActionButton
         android:id="@+id/add_new_task"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignEnd="@+id/newDesc"
         android:layout_alignRight="@+id/newDesc"
-        android:layout_below="@+id/newDesc"
-        android:layout_marginBottom="10dp"
+        android:layout_below="@+id/newPriority"
         android:src="@drawable/ic_add" />
 </RelativeLayout>

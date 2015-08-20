@@ -1,10 +1,12 @@
 package me.ryanmiles.todo.adapters;
 
 import android.content.Context;
+import android.graphics.Paint;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -18,7 +20,6 @@ public class ItemListRecylerAdapter extends RecyclerView.Adapter<ItemListRecyler
     Context context;
     LayoutInflater inflater;
     ArrayList<Item> items = new ArrayList<>();
-    Item item = new Item();
 
     public ItemListRecylerAdapter(Context context) {
         this.context = context;
@@ -36,14 +37,25 @@ public class ItemListRecylerAdapter extends RecyclerView.Adapter<ItemListRecyler
     @Override
     public void onBindViewHolder(ItemListRecylerAdapter.MyViewHolder holder, int position) {
         Item item = items.get(position);
-        holder.title.setText(item.getTitle());
-        //holder.itemView.setOnClickListener(new OpenItem(position));
+        if (item.isStrike()) {
+            holder.title.setText(item.getTitle());
+            holder.title.setPaintFlags(holder.title.getPaintFlags() | Paint.STRIKE_THRU_TEXT_FLAG);
+        } else {
+            holder.title.setText(item.getTitle());
+        }
+        if (item.getPriority() == 1) {
+            holder.priority_iv.setImageResource(R.drawable.ic_dot_red);
+        } else if (item.getPriority() == 2) {
+            holder.priority_iv.setImageResource(R.drawable.ic_dot_purple);
+        } else {
+            holder.priority_iv.setImageResource(R.drawable.ic_dot);
+        }
         holder.title.setTag(position);
         holder.title.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 TextView cb = (TextView) v;
                 int pos = (int) cb.getTag();
-                removeItem(pos);
+                setStrike(items.get(pos));
             }
         });
     }
@@ -51,6 +63,8 @@ public class ItemListRecylerAdapter extends RecyclerView.Adapter<ItemListRecyler
 
     public void addItem(Item item) {
         items.add(item);
+        item.save();
+        notifyDataSetChanged();
     }
 
     public void removeItem(int pos) {
@@ -58,6 +72,12 @@ public class ItemListRecylerAdapter extends RecyclerView.Adapter<ItemListRecyler
         d = Item.findById(Item.class, d.getId());
         d.delete();
         items.remove(pos);
+        notifyDataSetChanged();
+    }
+
+    public void setStrike(Item item) {
+        item.setStrike(true);
+        item.save();
         notifyDataSetChanged();
     }
 
@@ -74,11 +94,13 @@ public class ItemListRecylerAdapter extends RecyclerView.Adapter<ItemListRecyler
 
         View itemView;
         TextView title;
+        ImageView priority_iv;
 
         public MyViewHolder(View itemView) {
             super(itemView);
             this.itemView = itemView;
             title = (TextView) itemView.findViewById(R.id.title_text_view);
+            priority_iv = (ImageView) itemView.findViewById(R.id.dot);
         }
     }
 

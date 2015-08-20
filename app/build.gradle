@@ -42,4 +42,5 @@ dependencies {
     compile 'com.daimajia.androidanimations:library:1.1.3@aar'
     compile 'it.neokree:MaterialNavigationDrawer:1.3.2'
     compile 'com.android.support:design:22.2.1'
+    compile 'com.github.brnunes:swipeablerecyclerview:1.0.1'
 }
